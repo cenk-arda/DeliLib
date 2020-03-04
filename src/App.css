@@ -183,30 +183,39 @@ rect {
 }
 
 #leaderboard{
-  padding-top: 50px;
-  background-color: #2a7886;
-  width:20%;
-  margin-left: auto;
-  margin-right: auto;
-  position:relative;
-  padding-bottom: 50px;
-  border-radius: 6%;
-  border: 3px solid #F1F3F4;
+  right: 0;
+  position:absolute;
   text-align: center;
   opacity: 0.8;
+  width: 20%;
+  height: 70%;
+  border: 5px solid #F1F3F4;
+  border-top: none;
+  padding-top: 50px;
+  background-color: #2a7886;
+  border-radius: 500px;
+  margin-top: 1%;
+  margin-left: 1%;
 }
 #seatArea{
   padding-top: 50px;
   background-color: #2a7886;
-  width:20%;
-  margin-left: auto;
+  width:50%;
+  left: 200px;
+  height: 70%;
   margin-right: auto;
-  position:relative;
+  position:absolute;
   padding-bottom: 50px;
-  border-radius: 6%;
-  border: 3px solid #F1F3F4;
+  border: 5px solid #F1F3F4;
+  border-top: none;
+  border-top-left-radius: 300px;
+  border-top-right-radius: 300px;
+  border-bottom-left-radius: 100px;
+  border-bottom-right-radius: 100px;
   text-align: center;
   opacity: 0.8;
+  margin-top: 1%;
+  margin-left: 1%;
 }
 
 
@@ -244,7 +253,7 @@ rect {
   color: white;
   line-height: 50px;
   justify-content: center;
-  text-align: center; 
+  text-align: center;
 
 }
 .logo{
@@ -256,8 +265,31 @@ rect {
  top: 10px;
 }
 .profileButton{
-  margin-right: 20px;
-  float: right;
+  width: 100px;
+    background: #F1F3F4;
+    color: black;
+    border: 0 none;
+    border-radius: 50px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 5px;
+      float: right;
+  svg {
+    height: 45px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+
+  }
+
+rect {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 2;
+  stroke-dasharray: 422, 0;
+  transition: all 0.35s linear;
+}
 }
 div.left {
   float: left;
@@ -283,6 +315,31 @@ margin-left: 1%;
   background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(./components/building.jpg);
   height: 100vh;
 
+}
+
+.box {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.box select {
+  background-color: #0563af;
+  color: white;
+  padding: 12px;
+  width: 250px;
+  border: none;
+  font-size: 20px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+  -webkit-appearance: button;
+  appearance: button;
+  outline: none;
+}
+
+
+.box select option {
+  padding: 30px;
 }
 
 p{
