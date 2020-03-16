@@ -4,7 +4,7 @@ import './App.css';
 import Register from './components/register';
 import Login from './components/login';
 import Authmenu from './components/authmenu';
-import UserProfile from './components/userProfile.js';
+/*import UserProfile from './components/userProfile.js';*/
 import User from './components/user.js';
 
 import {
