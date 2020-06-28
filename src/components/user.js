@@ -33,10 +33,10 @@ switchPersonal(){
           <Header />
            <LeftDiv />
         <div id = "msform2">
-          <button className = "action-button" onClick = {this.switchPersonal}>
+          <button className = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" onClick = {this.switchPersonal}>
           Personal
           </button>
-        <button className = "action-button" onClick = {this.switchSchool}>
+        <button className = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" onClick = {this.switchSchool}>
           School Info
           </button>
           <div> <Personal/> </div>
@@ -54,10 +54,10 @@ switchPersonal(){
            <Header />
            <LeftDiv />
          <div id = "msform2">
-           <button className = "action-button" onClick = {this.switchPersonal}>
+           <button className = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" onClick = {this.switchPersonal}>
            Personal
            </button>
-           <button className = "action-button" onClick = {this.switchSchool}>
+           <button className = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" onClick = {this.switchSchool}>
            School Info
            </button>
            <div> <School/> </div>

@@ -12,8 +12,8 @@ class Authmenu extends Component{
      view: false
     };
 
-this.signIn = this.signIn.bind(this);
-this.signUp = this.signUp.bind(this);
+    this.signIn = this.signIn.bind(this);
+    this.signUp = this.signUp.bind(this);
   }
 
 signIn(e){
@@ -31,11 +31,11 @@ signUp(e){
        return(
         <div className = "frame">
           <Header />
-        <div id = "msform">
-          <button className = "action-button" onClick = {this.signIn}>
+        <div>
+          <button className = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" style=  {{borderRadius: "12px"}} onClick = {this.signIn}>
           Sign In
           </button>
-        <button className = "action-button" onClick = {this.signUp}>
+        <button className = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" style=  {{borderRadius: "12px"}} onClick = {this.signUp}>
           Sign Up
           </button>
           <div> <Register/> </div>
@@ -49,11 +49,11 @@ signUp(e){
         return(
          <div className = "frame">
           <Header />
-         <div id = "msform">
-           <button className = "action-button" onClick = {this.signIn}>
+         <div>
+          <button className = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" style=  {{borderRadius: "12px"}}onClick = {this.signIn}>
            Sign In
            </button>
-           <button className = "action-button" onClick = {this.signUp}>
+           <button className ="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" style=  {{borderRadius: "12px"}}onClick = {this.signUp}>
            Sign Up
            </button>
            <div> <Login/> </div>
