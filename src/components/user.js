@@ -31,39 +31,53 @@ switchPersonal(){
 
         <div className = "frame">
           <Header />
-           <LeftDiv />
-        <div id = "msform2">
-          <button className = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" onClick = {this.switchPersonal}>
-          Personal
-          </button>
-        <button className = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" onClick = {this.switchSchool}>
-          School Info
-          </button>
-          <div> <Personal/> </div>
 
-        </div>
+             <button className = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" style ={{ marginTop:"22%", margin:"auto",outline:"none"}} onClick = {this.switchPersonal}>
+             Personal
+             </button>
+           <button className = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" style ={{ margin:"auto", marginTop:"22%",outline:"none" }} onClick = {this.switchSchool}>
+             School Info
+             </button>
+
+        <div className ="font-bold text-xl mb-2" style = {{
+          width: "35%",
+          margin:"auto",
+          background : "white",
+      }}>
+
+           <Personal/>
+          </div>
         <Footer/>
         </div>
 
       );
       }
-      else{
+
+
+       else{
         return(
 
-         <div className = "frame">
-           <Header />
-           <LeftDiv />
-         <div id = "msform2">
-           <button className = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" onClick = {this.switchPersonal}>
-           Personal
-           </button>
-           <button className = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" onClick = {this.switchSchool}>
-           School Info
-           </button>
-           <div> <School/> </div>
+    <div className = "frame">
+                <Header />
 
-         </div>
-         <Footer/>
+                   <button className = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"style ={{ marginTop:"22%", margin:"auto",outline:"none"}}onClick = {this.switchPersonal}>
+                   Personal
+                   </button>
+                   <button className = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" style ={{ marginTop:"22%", margin:"auto",outline:"none"}} onClick = {this.switchSchool}>
+                   School Info
+                   </button>
+
+              <div className ="font-bold text-xl mb-2" style = {{
+                     margin:"auto",
+                     top:"30%",
+                     width: "35%",
+                     height: "30%",
+                   background : "white",
+                 }}>
+                 <School/>
+             </div>
+
+               <Footer/>
        </div>
 
        );

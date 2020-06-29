@@ -58,10 +58,11 @@ class Register extends Component{
       render(){
 
         return (
-        <div className="w-full max-w-xs" style = {{position: "absolute",margin: "auto",	top:"10",	bottom: "10", left: "0",	right: "0"}}>
-        <h1 style={{fontSize:"60px",textShadow: "-1px 0 white, 0 1px white, 1px 0 white, 0 -1px white", color: "black", position: "relative",margin: "auto"}} > Join us! </h1>
+        <div className="w-full max-w-xs" style = {{position: "absolute",margin: "auto",	top:"%20",	bottom: "10", left: "0",	right: "0"}}>
 
-        <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"  onSubmit = {this.handleSubmit}>
+
+        <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" style = {{ }}  onSubmit = {this.handleSubmit}>
+            <h1 style={{position:"relative",marginTop:"10px", fontSize:"50px",textShadow: "-1px 0 white, 0 1px white, 1px 0 white, 0 -1px white", color: "black", position: "relative",margin: "auto"}} > Join us! </h1><br />
           <div className="mb-4">
             <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="firstname" type="text" name = "first_name" placeholder = "First Name" value= {this.state.first_name} onChange = {this.handleChange} required/>
           </div>
@@ -91,7 +92,7 @@ class Register extends Component{
           </div>
 
 
-         <button type="submit" className =  "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">Register</button>
+         <button type="submit" className =  "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" style = {{outline:"none"}}>Register</button>
         </form>
 
          </div>
