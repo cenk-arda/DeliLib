@@ -8,8 +8,9 @@ class MainStore {
   desks= [];
   group = null;
   user = {
-
-  }
+    
+  };
+  uri = "http://192.168.0.23:3000/"
 }
 
 decorate(MainStore, {

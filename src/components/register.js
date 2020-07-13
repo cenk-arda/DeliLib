@@ -45,7 +45,7 @@ class Register extends Component{
       password : this.state.password,
     }
     console.log(data);
-    axios.post("http://192.168.0.15:3000/user/signup/", data)
+    axios.post(MainStore.uri + "user/signup/", data)
     .catch(err => console.log(err))
     .then(res => {
       console.log(res);
@@ -63,10 +63,10 @@ class Register extends Component{
       render(){
 
         return (
-        <div className="w-full max-w-xs" style = {{position: "relative", marginTop:"20px"}}>
+        <div className="w-full max-w-xs" style = {{marginTop:"20px", widht : "100%"}}>
 
 
-        <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" style = {{ }}  onSubmit = {this.handleSubmit}>
+        <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" style = {{position: "absolute", width : "26%",marginLeft: "37%" ,  }}  onSubmit = {this.handleSubmit}>
             <h1 style={{position:"relative",marginTop:"10px", fontSize:"50px",textShadow: "-1px 0 white, 0 1px white, 1px 0 white, 0 -1px white", color: "black",margin: "auto"}} > Join us! </h1><br />
           <div className="mb-4">
             <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="firstname" style={{textTransform: "capitalize"}} type="text" name = "first_name" placeholder = "First Name" value= {this.state.first_name} onChange = {this.handleChange} required/>
@@ -95,7 +95,7 @@ class Register extends Component{
           </div>
 
 
-         <button type="submit" className =  "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" style = {{outline:"none"}}>Register</button>
+         <button type="submit" className =  "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" style = {{outline:"none", backgroundColor: "red"}}>Register</button>
         </form>
 
          </div>

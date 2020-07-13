@@ -6,6 +6,8 @@ import Header from './header';
 import axios from 'axios';
 import MainStore from "./store";
 import {observer} from "mobx-react"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChair } from '@fortawesome/free-solid-svg-icons';
 
 const Seat = observer(
   class Seat extends Component {
@@ -31,8 +33,9 @@ const Seat = observer(
             height: "70%",
             borderTop: "none",
             backgroundColor: "white",
-            marginTop: "1%",
-            marginLeft: "1%" }} >
+            marginTop: "50px",
+            marginLeft: "5%",
+          }} >
 
             <div style = {{marginLeft:"auto"}}>  {this.renderSelector()} </div>
             <div style = {{objectFit:"contain",position:"relative"}}> {this.renderGroups(this.state.group)} </div>
@@ -53,10 +56,15 @@ const Seat = observer(
 renderSelector(){
   return(
     <div className = "box">
-        <label> Select a part of the library. </label> <br />
-          <select name = "select" value={this.state.group}
+        <p style = {{marginTop: "20px", fontWeight: "500"}}> Select a part of the library. </p>
+          <select name = "select" value={this.state.group} style = {{
+            height: "35px",
+            borderRadius: "10px",
+            marginTop: "10px",
+            marginBottom: "40px"
+          }}
             onChange={(e) => {this.setState({group : e.target.value }); this.getDesks(e.target.value); MainStore.group = e.target.value; } } >
-
+            
               <option value="1"> Group1</option>
               <option value="2"> Group2</option>
           </select>
@@ -69,7 +77,7 @@ getDesks = (num) => {
     group: num
   }
 
-  axios.post("http://192.168.0.15:3000/seat/all",body,{
+  axios.post(MainStore.uri + "seat/all",body,{
     headers: {
         token : localStorage.getItem('token')
       }
@@ -95,7 +103,7 @@ componentDidMount(){
 }
 
 getUser = () => {
-    axios.get("http://192.168.0.15:3000/user/me", {
+    axios.get(MainStore.uri + "user/me", {
         headers: {
             token: MainStore.token
         }
@@ -118,7 +126,7 @@ renderGroups(groupname){
       const Group1 = MainStore.desks.map( item => {
       if (item.isAvailable) {return(
           <div><a href={"#"} style = {{objectFit:"contain",maxWidth:"35%",maxLength:"25%"}} onClick={(e)=>{e.preventDefault();this.setState({group : this.state.group, isSelected: 1, selectedDesk: item.seatNum }); console.log("seat " +item.seatNum +" is clicked");}}>
-           <img src = {require("./chair-icon.png")} style = {{objectFit:"contain", marginLeft:"auto", marginRight:"auto",maxWidth:"35%"}}></img>
+           <FontAwesomeIcon icon={faChair} size = "2x" color = "green" />
          </a>
          <p style = {{fontSize:"55%" }}> Desk-{item.seatNum} is Available</p></div>
         )}
@@ -126,7 +134,7 @@ renderGroups(groupname){
 
         return(
          <div> <a href={"#"} style = {{objectFit:"contain",maxWidth:"35%",maxLength:"25%"}} onClick= {() => alert("Already Occupied")}>
-           <img src = {require("./chair-icon.png")} style = {{objectFit:"contain", marginLeft:"auto", marginRight:"auto",maxWidth:"35%"}}></img>
+           <FontAwesomeIcon icon={faChair} size = "2x" color = "gray"/>
          </a>
          <p style = {{fontSize:"55%" }}> Desk-{item.seatNum} is not Available</p> </div>
        )
@@ -136,7 +144,7 @@ renderGroups(groupname){
     const Group2 = MainStore.desks.map( item => {
     if (item.isAvailable) {return(
         <div><a href={"#"} style = {{objectFit:"contain",maxWidth:"35%",maxLength:"25%"}} onClick={(e)=>{e.preventDefault();this.setState({group : this.state.group, isSelected: 1, selectedDesk: item.seatNum }); console.log("seat " +item.seatNum +" is clicked");}}>
-         <img src = {require("./chair-icon.png")} style = {{objectFit:"contain", marginLeft:"auto", marginRight:"auto",maxWidth:"35%"}}></img>
+         <i class="fas fa-chair" style = {{objectFit:"contain", marginLeft:"auto", marginRight:"auto",maxWidth:"35%"}}></i>
        </a>
        <p style = {{fontSize:"55%" }}> Desk-{item.seatNum} is Available</p></div>
       )}
@@ -144,7 +152,7 @@ renderGroups(groupname){
       return(
 
        <div> <a href={"#"} style = {{objectFit:"contain",maxWidth:"35%",maxLength:"25%"}}  onClick ={() => alert("Already Accupıed")}>
-         <img src = {require("./chair-icon.png")} style = {{objectFit:"contain", marginLeft:"auto", marginRight:"auto",maxWidth:"35%"}}></img>
+         <i class="fas fa-chair" style = {{objectFit:"contain", marginLeft:"auto", marginRight:"auto",maxWidth:"35%"}}></i>
        </a>
        <p style = {{fontSize:"55%" }}> Desk-{item.seatNum} is not Available</p> </div>
      )
@@ -167,7 +175,7 @@ handleHold = (email, seatNum) => {
       email: email,
       seatNum: seatNum
   }
-  axios.post("http://192.168.0.15:3000/seat/hold", body, {
+  axios.post(MainStore.uri + "seat/hold", body, {
       headers: {
           token : MainStore.token
       }
@@ -189,7 +197,7 @@ handleUnhold = (email, seatNum) => {
        seatNum : localStorage.getItem('seatNum'),
        email : email
    }
-   axios.post("http://192.168.0.15:3000/seat/unhold", body, {
+   axios.post(MainStore.uri + "seat/unhold", body, {
        headers: {
            token : MainStore.token
        }
@@ -205,7 +213,7 @@ handleUnhold = (email, seatNum) => {
 
 
 renderInfo(isSelected,selectedDesk){
-
+  // alert(JSON.stringify(MainStore.user))
   if(MainStore.user.isSeated){
     return (<div> {MainStore.user.firstname +" "+ MainStore.user.lastname}, <br/> Seçilen Masa: {MainStore.user.seatNum}
 <br/>

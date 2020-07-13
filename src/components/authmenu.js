@@ -32,10 +32,10 @@ signUp(e){
         <div className = "frame">
           <Header />
           <div style={{margin:"auto"}}>
-          <button className = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" style=  {{position:"relative",borderRadius: "12px",outline:"none"}} onClick = {this.signIn}>
+          <button className = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" style=  {{borderRadius: "12px",outline:"none", backgroundColor: "red", marginTop: "30px"}} onClick = {this.signIn}>
           Sign In
           </button>
-        <button className = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" style=  {{position:"relative",borderRadius: "12px",outline:"none"}} onClick = {this.signUp}>
+        <button className = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" style=  {{borderRadius: "12px",outline:"none", backgroundColor: "red", marginTop: "30px",marginLeft: "20px"}} onClick = {this.signUp}>
           Sign Up
           </button>
           <Register/>
@@ -52,10 +52,10 @@ signUp(e){
          <div className = "frame">
                <Header />
                <div style = {{margin:"auto"}}>
-                    <button className = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" style=  {{position:"relative",borderRadius: "12px", outline:"none"}}onClick = {this.signIn}>
+                    <button className = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" style=  {{borderRadius: "12px", outline:"none", backgroundColor: "red", marginTop: "30px"}}onClick = {this.signIn}>
                      Sign In
                      </button>
-                     <button className ="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" style=  {{position:"relative",borderRadius: "12px",outline:"none"}}onClick = {this.signUp}>
+                     <button className ="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" style=  {{borderRadius: "12px",outline:"none", backgroundColor: "red", marginTop: "30px",marginLeft: "20px"}}onClick = {this.signUp}>
                      Sign Up
                      </button>
                       <Login/>
