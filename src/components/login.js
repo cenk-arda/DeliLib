@@ -1,44 +1,53 @@
 import React, { Component } from 'react';
 import axios from "axios";
-import MainStore from "./store";
+/*import MainStore from "./store";*/
+import {observer} from "mobx-react"
 
 
-class Login extends Component{
+const Login = observer(class Login extends Component{
   constructor(props) {
     super(props);
 
     this.state = {
-      userName: "",
+      email: "",
       password: ""
     };
 
-    this.handleSubmit = this.handleSubmit.bind(this); // class methods are not binded to this by default.
-    this.handleChange = this.handleChange.bind(this); // if arrow functions was used, there would no need to bind the methods to this.
+
   }
 
-  handleChange(event){
+  handleChange1(event){
     this.setState({
-      [event.target.name]: event.target.value
+     email: event.target.value
     })
   }
 
-  handleSubmit(event) {
-    let data = {
-      username : this.state.userName,
-      passwd: this.state.password
+    handleChange2(event){
+      this.setState({
+        password: event.target.value
+
+      })
     }
 
-    axios.post('http://pypy38.pythonanywhere.com/users/login/', data)
-    .catch(err => alert(err))
+
+  handleSubmit(event) {
+
+    let data = {
+      email: this.state.email,
+      password: this.state.password
+    }
+    console.log(data);
+
+    axios.post("http://192.168.0.15:3000/user/login/", data)
     .then(res => {
       console.log(res);
-      MainStore.id = res.data.id;
-      MainStore.token = res.data.token;
-      console.log(MainStore.id);
+      console.log(res.data.token);
+      localStorage.setItem('token',res.data.token);
+      window.location.href = "/study";
     } )
-    event.preventDefault();
-  }
+    .catch(err => console.log(err))
 
+  }
 
   /* take_user() => {
     data = {
@@ -54,23 +63,20 @@ class Login extends Component{
       render(){
 
         return (
-        <div className="w-full max-w-xs"style = {{position: "relative",margin: "auto",	top:"10",	marginBottom: "20px", left: "0",	right: "0"}}>
-
-        <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit = {this.handleSubmit}>
+        <div className="w-full max-w-xs"style = {{position: "relative",marginTop:"20px",	marginBottom: "20px"}}>
           <h1 style={{fontSize:"50px",textShadow: "-1px 0 white, 0 1px white, 1px 0 white, 0 -1px white"}}> Let's study! </h1> <br />
             <div className="mb-4">
-          <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" name = "userName" placeholder = "Username" value = {this.state.userName} onChange={this.handleChange} required/>
+              <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" name = "userName" placeholder = "Username" value = {this.state.email} onChange={(event) => this.handleChange1(event)} required/>
             </div>
 
             <div className="mb-4">
-          <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" name = "password" placeholder = "Password" value= {this.state.password} onChange = {this.handleChange} required/>
+              <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" name = "password" placeholder = "Password" value= {this.state.password} onChange = {(event) => this.handleChange2(event)} required/>
             </div>
 
-          <button type="submit" className = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" style= {{outline:"none"}}>Enter</button>
-        </form>
+          <button type="submit" className = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" onClick = {() =>this.handleSubmit()} style= {{outline:"none"}}>Enter</button>
          </div>
 
         );
       }
-}
+})
 export default Login;

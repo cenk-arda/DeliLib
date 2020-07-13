@@ -31,14 +31,16 @@ signUp(e){
        return(
         <div className = "frame">
           <Header />
-
-          <button className = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" style=  {{borderRadius: "12px",left:"%45",outline:"none"}} onClick = {this.signIn}>
+          <div style={{margin:"auto"}}>
+          <button className = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" style=  {{position:"relative",borderRadius: "12px",outline:"none"}} onClick = {this.signIn}>
           Sign In
           </button>
-        <button className = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" style=  {{borderRadius: "12px",left:"%52",outline:"none"}} onClick = {this.signUp}>
+        <button className = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" style=  {{position:"relative",borderRadius: "12px",outline:"none"}} onClick = {this.signUp}>
           Sign Up
           </button>
-          <div style= {{position:"relative",marginTop:"20px"}}> <Register/> </div>
+          <Register/>
+          </div>
+
 
 
         <Footer/>
@@ -48,18 +50,18 @@ signUp(e){
       else{
         return(
          <div className = "frame">
-          <Header />
-         <div>
-          <button className = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" style=  {{borderRadius: "12px", outline:"none"}}onClick = {this.signIn}>
-           Sign In
-           </button>
-           <button className ="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" style=  {{borderRadius: "12px",outline:"none"}}onClick = {this.signUp}>
-           Sign Up
-           </button>
-           <div style = {{position:"relative",marginTop:"20px"}}> <Login/> </div>
+               <Header />
+               <div style = {{margin:"auto"}}>
+                    <button className = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" style=  {{position:"relative",borderRadius: "12px", outline:"none"}}onClick = {this.signIn}>
+                     Sign In
+                     </button>
+                     <button className ="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" style=  {{position:"relative",borderRadius: "12px",outline:"none"}}onClick = {this.signUp}>
+                     Sign Up
+                     </button>
+                      <Login/>
+               </div>
 
-         </div>
-       <Footer />
+               <Footer />
        </div>
        );
       }

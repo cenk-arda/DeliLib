@@ -243,7 +243,7 @@ margin-left: 1%;
 position: absolute;
 }
 .frame{
-  position:relative;
+  
   text-align:center;
   justify-content: center;
   background-color: #ffffff;
@@ -263,22 +263,18 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
 }
 
 .box {
-  position: relative;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  borderTop: none;
 }
 
 .box select {
-  background-color: #0563af;
+  background-color: #00b0ff;
   color: white;
-  padding: 12px;
-  width: 250px;
+  padding: 3px;
+  width: 50%;
   border: none;
-  font-size: 20px;
-  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+  font-size: 15px;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
   -webkit-appearance: button;
-  appearance: button;
   outline: none;
 }
 

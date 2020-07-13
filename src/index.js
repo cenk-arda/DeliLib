@@ -2,19 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-import App from './App';
+
 import * as serviceWorker from './serviceWorker';
 
 import Authmenu from './components/authmenu';
-import Lessons from './components/lessons';
+
 import Seat from './components/seat';
 import User from './components/user.js';
 import './App.css';
 import {
   BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 
 const routing = (

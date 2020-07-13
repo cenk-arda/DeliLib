@@ -1,15 +1,23 @@
-import { action } from "mobx";
+import { observable, decorate } from "mobx";
+
 
 class MainStore {
-  token : NULL;
-  id : NULL;
-   user : {
+  ufuk ="ufuk";
+  pagenum = 0;
+  token = null;
+  desks= [];
+  group = null;
+  user = {
 
-    }
-
-
-
+  }
 }
+
+decorate(MainStore, {
+  pagenum: observable,
+  token: observable,
+  desks: observable,
+  user: observable
+})
 
 const store = new MainStore()
 
