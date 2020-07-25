@@ -3,7 +3,7 @@ import { observable, decorate, action  } from "mobx";
 
 class MainStore {
    ufuk ="ufuk";
-  pagenum = 1;
+  pagenum = 0;
   token = null;
   desks= [];
   group = null;
