@@ -11,7 +11,7 @@ class MainStore {
   };
 
 
-  uri = "http://localhost:3000/"
+  uri = "https://polar-hollows-42744.herokuapp.com/"
 }
 
 decorate(MainStore, {
