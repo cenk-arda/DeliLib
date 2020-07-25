@@ -96,15 +96,15 @@ handleSubmit(){
         </div>
 
       <div className="w-full max-w-xs"style = {{position: "relative",marginTop:"20px",	marginBottom: "20px", marginLeft:"auto", marginRight:"auto", }}>
-        <p className="text-gray-700 text-base"> Change your password: </p> <br/>
+        <p className="text-red-700 text-base"> Change your password: </p> <br/>
           <div className="mb-4">
-            <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="oldpassword" type="password" name = "oldpassword" placeholder = "Old Password" value = {this.state.oldpassword}  onChange={(event) => this.handleChange1(event)} required />
+            <input className="shadow appearance-none border rounded w-full py-2 px-3 text-red-700 leading-tight focus:outline-none focus:shadow-outline" id="oldpassword" type="password" name = "oldpassword" placeholder = "Old Password" value = {this.state.oldpassword}  onChange={(event) => this.handleChange1(event)} required />
           </div>
           <div className="mb-4">
-            <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="newpassword" type="password" name = "newpassword" placeholder = "New Password" value = {this.state.newpassword} onChange={(event) => this.handleChange1(event)} required/>
+            <input className="shadow appearance-none border rounded w-full py-2 px-3 text-red-700 leading-tight focus:outline-none focus:shadow-outline" id="newpassword" type="password" name = "newpassword" placeholder = "New Password" value = {this.state.newpassword} onChange={(event) => this.handleChange1(event)} required/>
           </div>
           <div className="mb-4">
-            <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="newpasswordAgain" type="password" name = "newpasswordAgain" placeholder = "New Password Again" value = {this.state.newpasswordAgain}  onChange={(event) => this.handleChange1(event)} required/>
+            <input className="shadow appearance-none border rounded w-full py-2 px-3 text-red-700 leading-tight focus:outline-none focus:shadow-outline" id="newpasswordAgain" type="password" name = "newpasswordAgain" placeholder = "New Password Again" value = {this.state.newpasswordAgain}  onChange={(event) => this.handleChange1(event)} required/>
           </div>
            <button type="submit" className = "bg-red-500 text-white font-bold py-2 px-4 rounded-full" onClick = {() =>this.handleSubmit()} style= {{outline:"none", backgroundColor: "red"}}>Change Password</button>
         </div>

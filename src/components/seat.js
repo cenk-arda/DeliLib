@@ -35,16 +35,17 @@ const Seat = observer(
             backgroundColor: "white",
             marginTop: "50px",
             marginLeft: "5%",
+            boxShadow: "2px 2px 2px 2px #9E9E9E"
           }} >
 
             <div style = {{marginLeft:"auto"}}>  {this.renderSelector()} </div>
             <div style = {{objectFit:"contain",position:"relative"}}> {this.renderGroups(this.state.group)} </div>
       </div>
-      <div style = {{textAlign:"center",backgroundColor:"black",float:"right", width:"40%", height:"50%"  }} >
-         <p  style= {{ color:"white",marginTop:"50%",alignContent:"center"}}> BURAYA BAKARLAR (FOTO)</p>
+      <div style = {{textAlign:"center",float:"right", width:"40%", height:"50%", marginRight: "5%", borderRadius: "5px", marginTop:"10px"  }} >
+         <img src = {require("./udago.jpg")} style= {{width: "100%", height: '100%' ,objectFit: "contain",}}/>
       </div>
 
-      <div style = {{ marginTop:"5%",backgroundColor:"black",float:"right", width:"40%", height:"20%" }} >
+      <div style = {{ marginTop:"5%",backgroundColor:"white",float:"right",marginRight: "5%", width:"40%", height:"20%", borderRadius: "5px",boxShadow: "2px 2px 2px 2px #9E9E9E" }} >
           <div style= {{ color:"white"}}> {this.renderInfo(this.state.isSelected, this.state.selectedDesk)}</div> </div>
 
       <Footer />
@@ -56,7 +57,7 @@ const Seat = observer(
 renderSelector(){
   return(
     <div className = "box">
-        <p style = {{marginTop: "20px", fontWeight: "500"}}> Select a part of the library. </p>
+        <p style = {{marginTop: "20px", fontWeight: "500",}}> Select a part of the library. </p>
           <select name = "select" value={this.state.group} style = {{
             height: "35px",
             borderRadius: "10px",
@@ -134,7 +135,7 @@ renderGroups(groupname){
 
         return(
          <div> <a href={"#"} style = {{objectFit:"contain",maxWidth:"35%",maxLength:"25%"}} onClick= {() => alert("Already Occupied")}>
-           <FontAwesomeIcon icon={faChair} size = "2x" color = "gray"/>
+           <FontAwesomeIcon icon={faChair} size = "2x" color = "red"/>
          </a>
          <p style = {{fontSize:"55%" }}> Desk-{item.seatNum} is not Available</p> </div>
        )
@@ -215,23 +216,30 @@ handleUnhold = (email, seatNum) => {
 renderInfo(isSelected,selectedDesk){
   // alert(JSON.stringify(MainStore.user))
   if(MainStore.user.isSeated){
-    return (<div> {MainStore.user.firstname +" "+ MainStore.user.lastname}, <br/> Seçilen Masa: {MainStore.user.seatNum}
-<br/>
-   Oturduğunuz Saat: {this.state.hours}.{this.state.minutes}
-<br/>
-    <button className = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" style=  {{borderRadius: "12px",outline:"none"}} onClick = {(e)=>{console.log(MainStore.user.seatNum)
-        this.handleUnhold(MainStore.user.email,MainStore.user.seatNum);
-      }}> Masadan Kalk </button>
+    return (
+    <div>
+       <p style = {{color : "black", fontWeight: "500", fontSize: "24px", marginTop: "15px", marginBottom:"10px"}}>{MainStore.user.firstname +" "+ MainStore.user.lastname}, <br/></p> 
+       <p style = {{color : "black", fontWeight: "500", fontSize: "16px", marginBottom:"10px"}}>Seçilen Masa: {MainStore.user.seatNum}</p>
+       <p style = {{color : "black", fontWeight: "500", fontSize: "16px", marginBottom:"10px"}}>
+          Oturduğunuz Saat: {this.state.hours}.{this.state.minutes}
+      </p>
+      <button className = "text-white font-bold py-2 px-4 rounded-full" style=  {{borderRadius: "12px",outline:"none", backgroundColor: "red"}} onClick = {(e)=>{console.log(MainStore.user.seatNum)
+          this.handleUnhold(MainStore.user.email,MainStore.user.seatNum);
+        }}> Masadan Kalk </button>
     </div>)
   }
   else if(!isSelected){ //when no seat is selected yet
-    return (<div>  {MainStore.user.firstname +" "+ MainStore.user.lastname}  <br/> bir masa seç!
+    return (
+    <div> 
+      <p style = {{color : "black", fontWeight: "500", fontSize: "24px", marginTop: "55px"}}>{MainStore.user.firstname +" "+ MainStore.user.lastname}</p>  
+       <p style = {{color : "black", fontWeight: "500", fontSize: "16px"}}>bir masa seç!</p>
      </div>)
   }
   else if(isSelected===1){ // when a seat is clicked
     return (<div>
-      <p> {MainStore.user.firstname +" "+ MainStore.user.lastname}, <br/> Seçilecek Masa: {selectedDesk} </p>
-      <button className = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" style=  {{borderRadius: "12px",outline:"none"}} onClick = {(e)=>{this.setState({
+      <p style = {{color : "black", fontWeight: "500", fontSize: "24px", marginTop: "25px", marginBottom:"10px"}}> {MainStore.user.firstname +" "+ MainStore.user.lastname}, <br/></p>
+       <p style = {{color : "black", fontWeight: "500", fontSize: "16px", marginBottom: "20px"}}> Seçilecek Masa: {selectedDesk} </p>
+      <button className = "text-white font-bold py-2 px-4 rounded-full" style=  {{borderRadius: "12px",outline:"none", backgroundColor: "red"}} onClick = {(e)=>{this.setState({
         selectedDesk : MainStore.user.seatNum}); this.handleHold(MainStore.user.email,this.state.selectedDesk);  let date = new Date();
           let hours = date.getHours()
           let minutes = date.getMinutes()

@@ -3,6 +3,7 @@ import Register from './register';
 import Login from './login';
 import Header from './header';
 import Footer from './footer';
+import Advertise from './advertise';
 
 class Authmenu extends Component{
   constructor(props) {
@@ -31,16 +32,17 @@ signUp(e){
        return(
         <div className = "frame">
           <Header />
-          <div style={{margin:"auto"}}>
-          <button className = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" style=  {{borderRadius: "12px",outline:"none", backgroundColor: "red", marginTop: "30px"}} onClick = {this.signIn}>
+          <div style = {{marginLeft: "18%", float: "left"}}>
+          <button className = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" style=  {{borderRadius: "12px",outline:"none", backgroundColor: "red", marginTop: "30px", marginLeft: "150px"}} onClick = {this.signIn}>
           Sign In
           </button>
-        <button className = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" style=  {{borderRadius: "12px",outline:"none", backgroundColor: "red", marginTop: "30px",marginLeft: "20px"}} onClick = {this.signUp}>
+        <button className = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" style=  {{borderRadius: "12px",outline:"none", backgroundColor: "red", marginTop: "30px", marginLeft: "30px"}} onClick = {this.signUp}>
           Sign Up
           </button>
           <Register/>
+          
           </div>
-
+          <Advertise/>
 
 
         <Footer/>
@@ -51,15 +53,16 @@ signUp(e){
         return(
          <div className = "frame">
                <Header />
-               <div style = {{margin:"auto"}}>
-                    <button className = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" style=  {{borderRadius: "12px", outline:"none", backgroundColor: "red", marginTop: "30px"}}onClick = {this.signIn}>
+               <div style = {{marginLeft: "18%", float: "left"}}>
+                    <button className = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" style=  {{borderRadius: "12px", outline:"none", backgroundColor: "red", marginTop: "30px", marginLeft: "30px"}}onClick = {this.signIn}>
                      Sign In
                      </button>
-                     <button className ="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" style=  {{borderRadius: "12px",outline:"none", backgroundColor: "red", marginTop: "30px",marginLeft: "20px"}}onClick = {this.signUp}>
+                     <button className ="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" style=  {{borderRadius: "12px",outline:"none", backgroundColor: "red", marginTop: "30px", marginLeft: "30px"}}onClick = {this.signUp}>
                      Sign Up
                      </button>
                       <Login/>
                </div>
+               <Advertise/>
 
                <Footer />
        </div>

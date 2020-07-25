@@ -63,38 +63,36 @@ class Register extends Component{
       render(){
 
         return (
-        <div className="w-full max-w-xs" style = {{marginTop:"20px", widht : "100%"}}>
+        <div className="w-full max-w-xs" style = {{ borderRadius: "5px",marginTop:"20px"}}>
 
 
-        <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" style = {{position: "absolute", width : "26%",marginLeft: "37%" ,  }}  onSubmit = {this.handleSubmit}>
+        <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" style = {{ width : "150%",  }}  onSubmit = {this.handleSubmit}>
             <h1 style={{position:"relative",marginTop:"10px", fontSize:"50px",textShadow: "-1px 0 white, 0 1px white, 1px 0 white, 0 -1px white", color: "black",margin: "auto"}} > Join us! </h1><br />
           <div className="mb-4">
-            <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="firstname" style={{textTransform: "capitalize"}} type="text" name = "first_name" placeholder = "First Name" value= {this.state.first_name} onChange = {this.handleChange} required/>
+            <input className="shadow appearance-none border rounded w-full py-2 px-3 text-red-700 leading-tight focus:outline-none focus:shadow-outline" id="firstname" style={{textTransform: "capitalize"}} type="text" name = "first_name" placeholder = "First Name" value= {this.state.first_name} onChange = {this.handleChange} required/>
           </div>
 
           <div className="mb-4">
-            <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="lastname" style={{textTransform: "capitalize"}} type="text" name = "last_name" placeholder = "Last Name" value= {this.state.last_name} onChange = {this.handleChange} required/>
+            <input className="shadow appearance-none border rounded w-full py-2 px-3 text-red-700 leading-tight focus:outline-none focus:shadow-outline" id="lastname" style={{textTransform: "capitalize"}} type="text" name = "last_name" placeholder = "Last Name" value= {this.state.last_name} onChange = {this.handleChange} required/>
           </div>
 
           <div className="mb-4">
-            <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="institution" style={{textTransform: "capitalize"}} type="text" name = "inst" placeholder = "Job" value= {this.state.inst} onChange = {this.handleChange} required/>
+            <input className="shadow appearance-none border rounded w-full py-2 px-3 text-red-700 leading-tight focus:outline-none focus:shadow-outline" id="institution" style={{textTransform: "capitalize"}} type="text" name = "inst" placeholder = "Job" value= {this.state.inst} onChange = {this.handleChange} required/>
           </div>
 
 
 
           <div className="mb-4">
-            <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="text" name = "email" placeholder = "E-mail" value= {this.state.email} onChange = {this.handleChange} required/>
+            <input className="shadow appearance-none border rounded w-full py-2 px-3 text-red-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="text" name = "email" placeholder = "E-mail" value= {this.state.email} onChange = {this.handleChange} required/>
           </div>
 
           <div className="mb-4">
-            <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" name = "password" placeholder = "Password" value= {this.state.password} onChange = {this.handleChange} required/>
+            <input className="shadow appearance-none border rounded w-full py-2 px-3 text-red-700 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" name = "password" placeholder = "Password" value= {this.state.password} onChange = {this.handleChange} required/>
           </div>
 
           <div className="mb-4">
-            <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="confirm_password" type="password" name = "confirm_password" placeholder = "Confirm your password" value= {this.state.confirm_password} onChange = {this.handleChange} required/>
+            <input className="shadow appearance-none border rounded w-full py-2 px-3 text-red-700 leading-tight focus:outline-none focus:shadow-outline" id="confirm_password" type="password" name = "confirm_password" placeholder = "Confirm your password" value= {this.state.confirm_password} onChange = {this.handleChange} required/>
           </div>
-
-
          <button type="submit" className =  "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" style = {{outline:"none", backgroundColor: "red"}}>Register</button>
         </form>
 

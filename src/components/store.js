@@ -1,16 +1,17 @@
-import { observable, decorate } from "mobx";
+import { observable, decorate, action  } from "mobx";
 
 
 class MainStore {
-  ufuk ="ufuk";
-  pagenum = 0;
+   ufuk ="ufuk";
+  pagenum = 1;
   token = null;
   desks= [];
   group = null;
   user = {
-    
   };
-  uri = "http://192.168.0.23:3000/"
+
+
+  uri = "http://localhost:3000/"
 }
 
 decorate(MainStore, {
@@ -19,6 +20,7 @@ decorate(MainStore, {
   desks: observable,
   user: observable
 })
+
 
 const store = new MainStore()
 
