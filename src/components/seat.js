@@ -145,15 +145,16 @@ renderGroups(groupname){
     const Group2 = MainStore.desks.map( item => {
     if (item.isAvailable) {return(
         <div><a href={"#"} style = {{objectFit:"contain",maxWidth:"35%",maxLength:"25%"}} onClick={(e)=>{e.preventDefault();this.setState({group : this.state.group, isSelected: 1, selectedDesk: item.seatNum }); console.log("seat " +item.seatNum +" is clicked");}}>
-         <i class="fas fa-chair" style = {{objectFit:"contain", marginLeft:"auto", marginRight:"auto",maxWidth:"35%"}}></i>
-       </a>
+         <FontAwesomeIcon icon={faChair} size = "2x" color = "green" />
+
+     </a>
        <p style = {{fontSize:"55%" }}> Desk-{item.seatNum} is Available</p></div>
       )}
 
       return(
 
-       <div> <a href={"#"} style = {{objectFit:"contain",maxWidth:"35%",maxLength:"25%"}}  onClick ={() => alert("Already Accupıed")}>
-         <i class="fas fa-chair" style = {{objectFit:"contain", marginLeft:"auto", marginRight:"auto",maxWidth:"35%"}}></i>
+       <div> <a href={"#"} style = {{objectFit:"contain",maxWidth:"35%",maxLength:"25%"}}  onClick ={() => alert("Already Occupied")}>
+          <FontAwesomeIcon icon={faChair} size = "2x" color = "red"/>
        </a>
        <p style = {{fontSize:"55%" }}> Desk-{item.seatNum} is not Available</p> </div>
      )
