@@ -69,7 +69,7 @@ getDesks = (num) => {
     group: num
   }
 
-  axios.post("http://192.168.0.15:3000/seat/all",body,{
+  axios.post("https://polar-hollows-42744.herokuapp.com/seat/all",body,{
     headers: {
         token : localStorage.getItem('token')
       }
@@ -95,7 +95,7 @@ componentDidMount(){
 }
 
 getUser = () => {
-    axios.get("http://192.168.0.15:3000/user/me", {
+    axios.get("https://polar-hollows-42744.herokuapp.com/user/me", {
         headers: {
             token: MainStore.token
         }
@@ -167,7 +167,7 @@ handleHold = (email, seatNum) => {
       email: email,
       seatNum: seatNum
   }
-  axios.post("http://192.168.0.15:3000/seat/hold", body, {
+  axios.post("https://polar-hollows-42744.herokuapp.com/seat/hold", body, {
       headers: {
           token : MainStore.token
       }
@@ -189,7 +189,7 @@ handleUnhold = (email, seatNum) => {
        seatNum : localStorage.getItem('seatNum'),
        email : email
    }
-   axios.post("http://192.168.0.15:3000/seat/unhold", body, {
+   axios.post("https://polar-hollows-42744.herokuapp.com/seat/unhold", body, {
        headers: {
            token : MainStore.token
        }

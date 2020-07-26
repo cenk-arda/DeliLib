@@ -38,7 +38,7 @@ const Login = observer(class Login extends Component{
     }
     console.log(data);
 
-    axios.post("http://192.168.0.15:3000/user/login/", data)
+    axios.post("https://polar-hollows-42744.herokuapp.com/user/login/", data)
     .then(res => {
       console.log(res);
       console.log(res.data.token);

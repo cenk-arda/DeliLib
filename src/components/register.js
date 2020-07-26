@@ -45,7 +45,7 @@ class Register extends Component{
       password : this.state.password,
     }
     console.log(data);
-    axios.post("http://192.168.0.15:3000/user/signup/", data)
+    axios.post("https://polar-hollows-42744.herokuapp.com/user/signup/", data)
     .catch(err => console.log(err))
     .then(res => {
       console.log(res);

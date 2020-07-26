@@ -22,7 +22,7 @@ constructor(props){
 
 
 getUser = () => {
- axios.get("http://192.168.0.15:3000/user/me", {
+ axios.get("https://polar-hollows-42744.herokuapp.com/user/me", {
      headers: {
          token : localStorage.getItem('token')
      }
@@ -63,7 +63,7 @@ handleSubmit(){
       oldPassword: this.state.oldpassword
     }
     console.log(body)
-    axios.post("http://192.168.0.15:3000/user/changePasswd",body,{
+    axios.post("https://polar-hollows-42744.herokuapp.com/user/changePasswd",body,{
       headers:{
           token: MainStore.token
       }
