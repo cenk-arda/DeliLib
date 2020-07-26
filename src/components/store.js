@@ -1,15 +1,17 @@
-import { observable, decorate } from "mobx";
+import { observable, decorate, action  } from "mobx";
 
 
 class MainStore {
-  ufuk ="ufuk";
+   ufuk ="ufuk";
   pagenum = 0;
   token = null;
   desks= [];
   group = null;
   user = {
+  };
 
-  }
+
+  uri = "https://polar-hollows-42744.herokuapp.com/"
 }
 
 decorate(MainStore, {
@@ -18,6 +20,7 @@ decorate(MainStore, {
   desks: observable,
   user: observable
 })
+
 
 const store = new MainStore()
 

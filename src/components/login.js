@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from "axios";
-/*import MainStore from "./store";*/
+import MainStore from "./store";
 import {observer} from "mobx-react"
 
 
@@ -38,7 +38,7 @@ const Login = observer(class Login extends Component{
     }
     console.log(data);
 
-    axios.post("https://polar-hollows-42744.herokuapp.com/user/login/", data)
+    axios.post(MainStore.uri + "user/login/", data)
     .then(res => {
       console.log(res);
       console.log(res.data.token);
@@ -63,17 +63,17 @@ const Login = observer(class Login extends Component{
       render(){
 
         return (
-        <div className="w-full max-w-xs"style = {{position: "relative",marginTop:"20px",	marginBottom: "20px"}}>
+        <div className="w-full max-w-xs" style = {{backgroundColor: "#fff", borderRadius: "5px",marginTop:"20px", width: "150%", padding: "30px"}}>
           <h1 style={{fontSize:"50px",textShadow: "-1px 0 white, 0 1px white, 1px 0 white, 0 -1px white"}}> Let's study! </h1> <br />
             <div className="mb-4">
-              <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" name = "userName" placeholder = "Username" value = {this.state.email} onChange={(event) => this.handleChange1(event)} required/>
+              <input className="shadow appearance-none border rounded w-full py-2 px-3 text-red-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" name = "userName" placeholder = "Username" value = {this.state.email} onChange={(event) => this.handleChange1(event)} required/>
             </div>
 
             <div className="mb-4">
-              <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" name = "password" placeholder = "Password" value= {this.state.password} onChange = {(event) => this.handleChange2(event)} required/>
+              <input className="shadow appearance-none border rounded w-full py-2 px-3 text-red-700 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" name = "password" placeholder = "Password" value= {this.state.password} onChange = {(event) => this.handleChange2(event)} required/>
             </div>
 
-          <button type="submit" className = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" onClick = {() =>this.handleSubmit()} style= {{outline:"none"}}>Enter</button>
+          <button type="submit" className = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" onClick = {() =>this.handleSubmit()} style= {{outline:"none", backgroundColor: "red"}}>Enter</button>
          </div>
 
         );

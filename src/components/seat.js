@@ -6,6 +6,8 @@ import Header from './header';
 import axios from 'axios';
 import MainStore from "./store";
 import {observer} from "mobx-react"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChair } from '@fortawesome/free-solid-svg-icons';
 
 const Seat = observer(
   class Seat extends Component {
@@ -31,17 +33,19 @@ const Seat = observer(
             height: "70%",
             borderTop: "none",
             backgroundColor: "white",
-            marginTop: "1%",
-            marginLeft: "1%" }} >
+            marginTop: "50px",
+            marginLeft: "5%",
+            boxShadow: "2px 2px 2px 2px #9E9E9E"
+          }} >
 
             <div style = {{marginLeft:"auto"}}>  {this.renderSelector()} </div>
             <div style = {{objectFit:"contain",position:"relative"}}> {this.renderGroups(this.state.group)} </div>
       </div>
-      <div style = {{textAlign:"center",backgroundColor:"black",float:"right", width:"40%", height:"50%"  }} >
-         <p  style= {{ color:"white",marginTop:"50%",alignContent:"center"}}> BURAYA BAKARLAR (FOTO)</p>
+      <div style = {{textAlign:"center",float:"right", width:"40%", height:"50%", marginRight: "5%", borderRadius: "5px", marginTop:"10px"  }} >
+         <img src = {require("./udago.jpg")} style= {{width: "100%", height: '100%' ,objectFit: "contain",}}/>
       </div>
 
-      <div style = {{ marginTop:"5%",backgroundColor:"black",float:"right", width:"40%", height:"20%" }} >
+      <div style = {{ marginTop:"5%",backgroundColor:"white",float:"right",marginRight: "5%", width:"40%", height:"20%", borderRadius: "5px",boxShadow: "2px 2px 2px 2px #9E9E9E" }} >
           <div style= {{ color:"white"}}> {this.renderInfo(this.state.isSelected, this.state.selectedDesk)}</div> </div>
 
       <Footer />
@@ -53,8 +57,13 @@ const Seat = observer(
 renderSelector(){
   return(
     <div className = "box">
-        <label> Select a part of the library. </label> <br />
-          <select name = "select" value={this.state.group}
+        <p style = {{marginTop: "20px", fontWeight: "500",}}> Select a part of the library. </p>
+          <select name = "select" value={this.state.group} style = {{
+            height: "35px",
+            borderRadius: "10px",
+            marginTop: "10px",
+            marginBottom: "40px"
+          }}
             onChange={(e) => {this.setState({group : e.target.value }); this.getDesks(e.target.value); MainStore.group = e.target.value; } } >
 
               <option value="1"> Group1</option>
@@ -69,7 +78,7 @@ getDesks = (num) => {
     group: num
   }
 
-  axios.post("https://polar-hollows-42744.herokuapp.com/seat/all",body,{
+  axios.post(MainStore.uri + "seat/all",body,{
     headers: {
         token : localStorage.getItem('token')
       }
@@ -95,7 +104,7 @@ componentDidMount(){
 }
 
 getUser = () => {
-    axios.get("https://polar-hollows-42744.herokuapp.com/user/me", {
+    axios.get(MainStore.uri + "user/me", {
         headers: {
             token: MainStore.token
         }
@@ -118,7 +127,7 @@ renderGroups(groupname){
       const Group1 = MainStore.desks.map( item => {
       if (item.isAvailable) {return(
           <div><a href={"#"} style = {{objectFit:"contain",maxWidth:"35%",maxLength:"25%"}} onClick={(e)=>{e.preventDefault();this.setState({group : this.state.group, isSelected: 1, selectedDesk: item.seatNum }); console.log("seat " +item.seatNum +" is clicked");}}>
-           <img src = {require("./chair-icon.png")} style = {{objectFit:"contain", marginLeft:"auto", marginRight:"auto",maxWidth:"35%"}}></img>
+           <FontAwesomeIcon icon={faChair} size = "2x" color = "green" />
          </a>
          <p style = {{fontSize:"55%" }}> Desk-{item.seatNum} is Available</p></div>
         )}
@@ -126,7 +135,7 @@ renderGroups(groupname){
 
         return(
          <div> <a href={"#"} style = {{objectFit:"contain",maxWidth:"35%",maxLength:"25%"}} onClick= {() => alert("Already Occupied")}>
-           <img src = {require("./chair-icon.png")} style = {{objectFit:"contain", marginLeft:"auto", marginRight:"auto",maxWidth:"35%"}}></img>
+           <FontAwesomeIcon icon={faChair} size = "2x" color = "red"/>
          </a>
          <p style = {{fontSize:"55%" }}> Desk-{item.seatNum} is not Available</p> </div>
        )
@@ -136,7 +145,7 @@ renderGroups(groupname){
     const Group2 = MainStore.desks.map( item => {
     if (item.isAvailable) {return(
         <div><a href={"#"} style = {{objectFit:"contain",maxWidth:"35%",maxLength:"25%"}} onClick={(e)=>{e.preventDefault();this.setState({group : this.state.group, isSelected: 1, selectedDesk: item.seatNum }); console.log("seat " +item.seatNum +" is clicked");}}>
-         <img src = {require("./chair-icon.png")} style = {{objectFit:"contain", marginLeft:"auto", marginRight:"auto",maxWidth:"35%"}}></img>
+         <i class="fas fa-chair" style = {{objectFit:"contain", marginLeft:"auto", marginRight:"auto",maxWidth:"35%"}}></i>
        </a>
        <p style = {{fontSize:"55%" }}> Desk-{item.seatNum} is Available</p></div>
       )}
@@ -144,7 +153,7 @@ renderGroups(groupname){
       return(
 
        <div> <a href={"#"} style = {{objectFit:"contain",maxWidth:"35%",maxLength:"25%"}}  onClick ={() => alert("Already Accupıed")}>
-         <img src = {require("./chair-icon.png")} style = {{objectFit:"contain", marginLeft:"auto", marginRight:"auto",maxWidth:"35%"}}></img>
+         <i class="fas fa-chair" style = {{objectFit:"contain", marginLeft:"auto", marginRight:"auto",maxWidth:"35%"}}></i>
        </a>
        <p style = {{fontSize:"55%" }}> Desk-{item.seatNum} is not Available</p> </div>
      )
@@ -167,7 +176,7 @@ handleHold = (email, seatNum) => {
       email: email,
       seatNum: seatNum
   }
-  axios.post("https://polar-hollows-42744.herokuapp.com/seat/hold", body, {
+  axios.post(MainStore.uri + "seat/hold", body, {
       headers: {
           token : MainStore.token
       }
@@ -189,7 +198,7 @@ handleUnhold = (email, seatNum) => {
        seatNum : localStorage.getItem('seatNum'),
        email : email
    }
-   axios.post("https://polar-hollows-42744.herokuapp.com/seat/unhold", body, {
+   axios.post(MainStore.uri + "seat/unhold", body, {
        headers: {
            token : MainStore.token
        }
@@ -205,25 +214,32 @@ handleUnhold = (email, seatNum) => {
 
 
 renderInfo(isSelected,selectedDesk){
-
+  // alert(JSON.stringify(MainStore.user))
   if(MainStore.user.isSeated){
-    return (<div> {MainStore.user.firstname +" "+ MainStore.user.lastname}, <br/> Seçilen Masa: {MainStore.user.seatNum}
-<br/>
-   Oturduğunuz Saat: {this.state.hours}.{this.state.minutes}
-<br/>
-    <button className = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" style=  {{borderRadius: "12px",outline:"none"}} onClick = {(e)=>{console.log(MainStore.user.seatNum)
-        this.handleUnhold(MainStore.user.email,MainStore.user.seatNum);
-      }}> Masadan Kalk </button>
+    return (
+    <div>
+       <p style = {{color : "black", fontWeight: "500", fontSize: "24px", marginTop: "15px", marginBottom:"10px"}}>{MainStore.user.firstname +" "+ MainStore.user.lastname}, <br/></p>
+       <p style = {{color : "black", fontWeight: "500", fontSize: "16px", marginBottom:"10px"}}>Seçilen Masa: {MainStore.user.seatNum}</p>
+       <p style = {{color : "black", fontWeight: "500", fontSize: "16px", marginBottom:"10px"}}>
+          Oturduğunuz Saat: {this.state.hours}.{this.state.minutes}
+      </p>
+      <button className = "text-white font-bold py-2 px-4 rounded-full" style=  {{borderRadius: "12px",outline:"none", backgroundColor: "red"}} onClick = {(e)=>{console.log(MainStore.user.seatNum)
+          this.handleUnhold(MainStore.user.email,MainStore.user.seatNum);
+        }}> Masadan Kalk </button>
     </div>)
   }
   else if(!isSelected){ //when no seat is selected yet
-    return (<div>  {MainStore.user.firstname +" "+ MainStore.user.lastname}  <br/> bir masa seç!
+    return (
+    <div>
+      <p style = {{color : "black", fontWeight: "500", fontSize: "24px", marginTop: "55px"}}>{MainStore.user.firstname +" "+ MainStore.user.lastname}</p>
+       <p style = {{color : "black", fontWeight: "500", fontSize: "16px"}}>bir masa seç!</p>
      </div>)
   }
   else if(isSelected===1){ // when a seat is clicked
     return (<div>
-      <p> {MainStore.user.firstname +" "+ MainStore.user.lastname}, <br/> Seçilecek Masa: {selectedDesk} </p>
-      <button className = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" style=  {{borderRadius: "12px",outline:"none"}} onClick = {(e)=>{this.setState({
+      <p style = {{color : "black", fontWeight: "500", fontSize: "24px", marginTop: "25px", marginBottom:"10px"}}> {MainStore.user.firstname +" "+ MainStore.user.lastname}, <br/></p>
+       <p style = {{color : "black", fontWeight: "500", fontSize: "16px", marginBottom: "20px"}}> Seçilecek Masa: {selectedDesk} </p>
+      <button className = "text-white font-bold py-2 px-4 rounded-full" style=  {{borderRadius: "12px",outline:"none", backgroundColor: "red"}} onClick = {(e)=>{this.setState({
         selectedDesk : MainStore.user.seatNum}); this.handleHold(MainStore.user.email,this.state.selectedDesk);  let date = new Date();
           let hours = date.getHours()
           let minutes = date.getMinutes()
