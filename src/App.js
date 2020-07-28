@@ -3,7 +3,7 @@ import './App.css';
 
 
 import Authmenu from './components/authmenu';
-/*import UserProfile from './components/userProfile.js';*/
+
 import User from './components/user.js';
 
 

@@ -17,11 +17,11 @@ import {
 
 const routing = (
 <Router>
-  {/*<Route exact path="/" component={home} />*/}
+
   <Route path="/profile" component={User} />
   <Route exact path="/"  component={Authmenu} />
   <Route path="/study" component={Seat} />
-  {/*<Route path="/delilib" component={Delilib} />*/}
+  
 </Router>
 )
 ReactDOM.render(routing, document.getElementById('root'));
