@@ -111,7 +111,8 @@ getUser = () => {
     })
     .then(res=> {
         MainStore.user = res.data;
-        if(MainStore.user.isSeated){console.log("ufukaq")
+        if(MainStore.user.isSeated){
+          console.log(res.data);
           this.setState({
             isSelected:2,
             selectedDesk:MainStore.user.seatNum
@@ -135,9 +136,9 @@ renderGroups(groupname){
 
         return(
          <div> <a href={"#"} style = {{objectFit:"contain",maxWidth:"35%",maxLength:"25%"}} onClick= {() => alert("Already Occupied")}>
-           <FontAwesomeIcon icon={faChair} size = "2x" color = "red"/>
+           {(MainStore.user.seatNum==item.seatNum)?<FontAwesomeIcon icon={faChair} size = "2x" color = "#FFD700" />:<FontAwesomeIcon icon={faChair} size = "2x" color = "red" />}
          </a>
-         <p style = {{fontSize:"55%" }}> Desk-{item.seatNum} is not Available</p> </div>
+         {(MainStore.user.seatNum==item.seatNum)?<p style = {{fontSize:"55%" }}> Your seat: Desk-{item.seatNum}</p> :<p style = {{fontSize:"55%" }}> Desk-{item.seatNum} is not Available</p> } </div>
        )
      })
 
@@ -154,9 +155,9 @@ renderGroups(groupname){
       return(
 
        <div> <a href={"#"} style = {{objectFit:"contain",maxWidth:"35%",maxLength:"25%"}}  onClick ={() => alert("Already Occupied")}>
-          <FontAwesomeIcon icon={faChair} size = "2x" color = "red"/>
+          {(MainStore.user.seatNum==item.seatNum)?<FontAwesomeIcon icon={faChair} size = "2x" color = "#FFD700" />:<FontAwesomeIcon icon={faChair} size = "2x" color = "red" />}
        </a>
-       <p style = {{fontSize:"55%" }}> Desk-{item.seatNum} is not Available</p> </div>
+       {(MainStore.user.seatNum==item.seatNum)?<p style = {{fontSize:"55%" }}> Your seat: Desk-{item.seatNum}</p> :<p style = {{fontSize:"55%" }}> Desk-{item.seatNum} is not Available</p> } </div>
      )
    })
 
@@ -222,7 +223,7 @@ renderInfo(isSelected,selectedDesk){
        <p style = {{color : "black", fontWeight: "500", fontSize: "24px", marginTop: "15px", marginBottom:"10px"}}>{MainStore.user.firstname +" "+ MainStore.user.lastname}, <br/></p>
        <p style = {{color : "black", fontWeight: "500", fontSize: "16px", marginBottom:"10px"}}>Seçilen Masa: {MainStore.user.seatNum}</p>
        <p style = {{color : "black", fontWeight: "500", fontSize: "16px", marginBottom:"10px"}}>
-          Oturduğunuz Saat: {this.state.hours}.{this.state.minutes}
+          Oturduğunuz Saat: {localStorage.getItem('hours')}.{localStorage.getItem('minutes')}
       </p>
       <button className = "text-white font-bold py-2 px-4 rounded-full" style=  {{borderRadius: "12px",outline:"none", backgroundColor: "red"}} onClick = {(e)=>{console.log(MainStore.user.seatNum)
           this.handleUnhold(MainStore.user.email,MainStore.user.seatNum);
@@ -250,9 +251,10 @@ renderInfo(isSelected,selectedDesk){
           if(minutes<10){
             minutes = "0"+minutes;
           }
-          this.state.hours = hours;
-          this.state.minutes = minutes;
-          console.log(hours,minutes); }}> Seç </button>
+          localStorage.setItem('hours',hours);
+          localStorage.setItem('minutes',minutes);
+          console.log(hours,minutes);
+          this.renderGroups(MainStore.group); }}> Seç </button>
      </div>)
   }
 
