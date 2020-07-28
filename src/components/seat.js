@@ -188,7 +188,7 @@ handleHold = (email, seatNum) => {
     this.getUser()
     this.setState({
       isSelected: 2 })
-      localStorage.setItem('seatNum',seatNum);
+      
   })
 .catch((err) => { console.log(err.response)})
 
@@ -197,7 +197,7 @@ handleHold = (email, seatNum) => {
 
 handleUnhold = (email, seatNum) => {
    let body = {
-       seatNum : localStorage.getItem('seatNum'),
+       seatNum : MainStore.user.seatNum,
        email : email
    }
    axios.post(MainStore.uri + "seat/unhold", body, {
@@ -220,7 +220,7 @@ renderInfo(isSelected,selectedDesk){
   if(MainStore.user.isSeated){
     return (
     <div>
-       <p style = {{color : "black", fontWeight: "500", fontSize: "24px", marginTop: "15px", marginBottom:"10px"}}>{MainStore.user.firstname +" "+ MainStore.user.lastname}, <br/></p>
+       <p style = {{color : "black", fontWeight: "500", fontSize: "24px", marginTop: "15px", marginBottom:"10px",textTransform:"capitalize"}}>{MainStore.user.firstname +" "+ MainStore.user.lastname}, <br/></p>
        <p style = {{color : "black", fontWeight: "500", fontSize: "16px", marginBottom:"10px"}}>Seçilen Masa: {MainStore.user.seatNum}</p>
        <p style = {{color : "black", fontWeight: "500", fontSize: "16px", marginBottom:"10px"}}>
           Oturduğunuz Saat: {localStorage.getItem('hours')}.{localStorage.getItem('minutes')}
@@ -233,13 +233,13 @@ renderInfo(isSelected,selectedDesk){
   else if(!isSelected){ //when no seat is selected yet
     return (
     <div>
-      <p style = {{color : "black", fontWeight: "500", fontSize: "24px", marginTop: "55px"}}>{MainStore.user.firstname +" "+ MainStore.user.lastname}</p>
+      <p style = {{color : "black", fontWeight: "500", fontSize: "24px", marginTop: "55px",textTransform:"capitalize"}}>{MainStore.user.firstname +" "+ MainStore.user.lastname}</p>
        <p style = {{color : "black", fontWeight: "500", fontSize: "16px"}}>bir masa seç!</p>
      </div>)
   }
   else if(isSelected===1){ // when a seat is clicked
     return (<div>
-      <p style = {{color : "black", fontWeight: "500", fontSize: "24px", marginTop: "25px", marginBottom:"10px"}}> {MainStore.user.firstname +" "+ MainStore.user.lastname}, <br/></p>
+      <p style = {{color : "black", fontWeight: "500", fontSize: "24px", marginTop: "25px", marginBottom:"10px",textTransform:"capitalize"}}> {MainStore.user.firstname +" "+ MainStore.user.lastname}, <br/></p>
        <p style = {{color : "black", fontWeight: "500", fontSize: "16px", marginBottom: "20px"}}> Seçilecek Masa: {selectedDesk} </p>
       <button className = "text-white font-bold py-2 px-4 rounded-full" style=  {{borderRadius: "12px",outline:"none", backgroundColor: "red"}} onClick = {(e)=>{this.setState({
         selectedDesk : MainStore.user.seatNum}); this.handleHold(MainStore.user.email,this.state.selectedDesk);  let date = new Date();
