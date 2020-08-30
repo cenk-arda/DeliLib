@@ -4,6 +4,7 @@ import Login from './login';
 import Header from './header';
 import Footer from './footer';
 import Advertise from './advertise';
+import Libraries from './libraries';
 
 class Authmenu extends Component{
   constructor(props) {
@@ -27,7 +28,7 @@ signUp(e){
 }
 
 
-      render(){
+      render(){ /*return (<div><Libraries /></div>)*/
        if(this.state.view) {
        return(
         <div className = "frame">
@@ -40,7 +41,7 @@ signUp(e){
           Sign Up
           </button>
           <Register/>
-          
+
           </div>
           <Advertise/>
 
@@ -67,7 +68,7 @@ signUp(e){
                <Footer />
        </div>
        );
-      }
+     }
   }
 
 }

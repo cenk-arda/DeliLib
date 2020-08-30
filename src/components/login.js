@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from "axios";
 import MainStore from "./store";
 import {observer} from "mobx-react"
-
+import Libraries from "./libraries"
 
 const Login = observer(class Login extends Component{
   constructor(props) {
@@ -12,7 +12,6 @@ const Login = observer(class Login extends Component{
       email: "",
       password: ""
     };
-
 
   }
 
@@ -38,16 +37,28 @@ const Login = observer(class Login extends Component{
     }
     console.log(data);
 
-    axios.post(MainStore.uri + "user/login/", data)
+    axios.post(MainStore.uri + "user/login", data)
     .then(res => {
       console.log(res);
       console.log(res.data.token);
-      localStorage.setItem('token',res.data.token);
-      window.location.href = "/study";
+     localStorage.setItem('token',res.data.token); /*since window refreshes mainstore, we cannot use mainstore instead of localstorage 16.08.2020 */
+     localStorage.setItem('email',this.state.email);
+    /*  MainStore.token = res.data.token;*/
+      MainStore.online  = true;
+      MainStore.email = this.state.email;
+
+      /*window.location.href = "/study";*/
+      window.location.href = "/libraries";
     } )
-    .catch(err => console.log(err))
+    .catch(err => alert(err))
 
   }
+
+  /*componentDidMount(){
+    if(MainStore.online){
+    window.location.href = "/study";
+    }
+  }*/   //??
 
   /* take_user() => {
     data = {

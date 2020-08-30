@@ -1,18 +1,15 @@
 import React, { Component } from 'react';
-
 import Personal from './personal';
-import School from './school';
-
 import Header from './header';
 import Footer from './footer';
 import {observer} from "mobx-react";
 import MainStore from "./store";
 import axios from 'axios';
+
 const User = observer(class User extends Component{
 constructor(props){
   super(props);
  this.state = {
-   view : true,
    oldpassword: "",
    newpassword: "",
    newpasswordAgain: ""
@@ -22,17 +19,21 @@ constructor(props){
 
 
 getUser = () => {
- axios.get(MainStore.uri + "user/me", {
-     headers: {
-         token : localStorage.getItem('token')
-     }
- })
- .then(res=> {
-     MainStore.user = res.data
-     MainStore.token = localStorage.getItem('token')
-     console.log(MainStore.user);
- })
- .catch(err => alert("Unable to Retrieve User"))
+  let body = {
+     email: localStorage.getItem('email')
+  }
+  axios.post(MainStore.uri+ "user/me", body, {
+    headers: {
+      token : localStorage.getItem('token')
+    }
+  })
+  .then(res=> {
+    MainStore.user = res.data
+  })
+  .catch(err => {
+    alert(JSON.stringify(err.response.data));
+    alert("user component, getuser ")
+  })
 }
 
 componentDidMount(){
@@ -41,9 +42,6 @@ componentDidMount(){
 }
 
 
-switchPersonal(){
-  this.setState({ view: true })
-}
 
 handleChange1(event){
   this.setState({
@@ -65,11 +63,12 @@ handleSubmit(){
     console.log(body)
     axios.post(MainStore.uri + "user/changePasswd",body,{
       headers:{
-          token: MainStore.token
+          token: localStorage.getItem('token')
       }
     })
     .then(res => {
       alert("Your password has changed successfully!")
+      window.location.href = "/profile"
     })
     .catch(err=>console.log(err))
   }
@@ -77,7 +76,7 @@ handleSubmit(){
 
   render(){
 
-       if(this.state.view) {
+
        return(
 
         <div className = "frame">
@@ -112,35 +111,10 @@ handleSubmit(){
         </div>
 
       );
-      }
 
 
-       else{
-        return(
-
-    <div className = "frame">
-                <Header />
-
-                   <button className = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"style ={{ marginTop:"22%", margin:"auto",outline:"none", backgroundColor : "red"}}onClick = {this.switchPersonal}>
-                   Personal
-                   </button>
 
 
-              <div className ="font-bold text-xl mb-2" style = {{
-                     margin:"auto",
-                     top:"30%",
-                     width: "35%",
-                     height: "30%",
-                   background : "white",
-                 }}>
-                 <School/>
-             </div>
-
-               <Footer/>
-       </div>
-
-       );
-      }
   }
 
 

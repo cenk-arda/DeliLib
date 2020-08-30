@@ -6,9 +6,10 @@ import './index.css';
 import * as serviceWorker from './serviceWorker';
 
 import Authmenu from './components/authmenu';
-
 import Seat from './components/seat';
 import User from './components/user.js';
+import Libraries from './components/libraries';
+
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -21,7 +22,8 @@ const routing = (
   <Route path="/profile" component={User} />
   <Route exact path="/"  component={Authmenu} />
   <Route path="/study" component={Seat} />
-  
+  <Route path = "/libraries" component = {Libraries} />
+
 </Router>
 )
 ReactDOM.render(routing, document.getElementById('root'));
